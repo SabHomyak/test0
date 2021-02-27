@@ -24,7 +24,7 @@ const PersonPresentation = () => {
       <Wrapper>
         <ContentLoader isLoading={isLoading}>
           <PersonImgContainer>
-            <img src='/static/images/Ben-Kenobi.jpg' alt='Kenobi' />
+            <img src='/static/images/star-wars/Ben-Kenobi.jpg' alt='Kenobi' />
           </PersonImgContainer>
           <PersonDetailsContainer>
             <PersonName>Darth Vader</PersonName>

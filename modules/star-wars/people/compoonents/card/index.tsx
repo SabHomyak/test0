@@ -12,7 +12,7 @@ interface Props {
 const Card: React.FC<Props> = ({ id, name }) => (
   <CardWrapper key={id}>
     <CardImgWrapper>
-      <CardImg src={'/static/images/Ben-Kenobi.jpg'} alt={`${name}-${id}`} />
+      <CardImg src={'/static/images/star-wars/Ben-Kenobi.jpg'} alt={`${name}-${id}`} />
     </CardImgWrapper>
     <CardFooter>
       <PersonLink pId={id}>
