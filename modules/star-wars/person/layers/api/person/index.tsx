@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 // utils
 import { useQuery } from '@md-utils/mock/query';
 // mock
-import { people, Person } from '@md-modules/shared/mock';
+import { people, Person } from '@md-modules/shared/mock/star-wars';
 
 interface Context {
   person: Person | undefined;

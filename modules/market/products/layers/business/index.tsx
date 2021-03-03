@@ -1,11 +1,11 @@
 import * as React from 'react';
 
 
-import { Product } from '@md-modules/shared/mock';
+import { Product } from '@md-modules/shared/mock/market/products';
 import { ProductsAPIContext } from '@md-modules/market/products/layers/api/products';
 
 interface Context {
-  productList: Pick<Product, 'id' | 'name'>[]
+  productList: Pick<Product, 'id' | 'name' | 'price'>[]
 }
 
 const ProductBLContext = React.createContext<Context>({
@@ -15,13 +15,13 @@ const ProductBLContext = React.createContext<Context>({
 const ProductsBLContextProvider: React.FC = ({ children }) => {
   const { products } = React.useContext(ProductsAPIContext);
 
-  const productList = React.useMemo<Pick<Product, 'id' | 'name'>[]>(() => {
+  const productList = React.useMemo<Pick<Product, 'id' | 'name' | 'price'>[]>(() => {
     if (!products) {
       return [];
     }
 
-    return products.map(({ id, name }) => ({
-      name, id
+    return products.map(({ id, name,price }) => ({
+      name, id,price
     }));
   }, [typeof products === 'undefined']);
 

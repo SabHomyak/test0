@@ -3,12 +3,28 @@ import styled from 'styled-components';
 export const CardWrapper = styled.div`
   border-radius:5px;
   overflow:hidden;
-  background:silver;
+
 `;
 
 export const CardImgWrapper = styled.div`
-  padding: 73% 0 0 0;
+  height:300px;
   position: relative;
+  border:.5px solid ${({theme}) => theme.colors.silver};
+`;
+
+export const CardHeader = styled.div`
+  background-color: ${({ theme }) => theme.colors.silver};
+  display:flex;
+  justify-content:center;
+  padding:3% 0;
+`
+
+export const CardHeaderTitle = styled.h5`
+  font-weight: bold;
+  line-height: 1.28;
+  font-size: 13px;
+  color: ${({ theme }) => theme.colors.white};
+  margin: 0;
 `;
 
 export const CardImg = styled.img`
@@ -22,9 +38,9 @@ export const CardImg = styled.img`
 
 export const CardFooter = styled.div`
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
-  background-color: ${({ theme }) => theme.colors.gray500};
+  background-color: ${({ theme }) => theme.colors.silver};
   padding: 10px 10px;
 
   a {
@@ -32,13 +48,10 @@ export const CardFooter = styled.div`
   }
 `;
 
-export const CardFooterTitle = styled.h5`
-  font-weight: bold;
-  line-height: 1.28;
-  font-size: 13px;
-  color: ${({ theme }) => theme.colors.white};
-  margin: 0;
-`;
+export const Price = styled.div`
+  color:white;
+  font-size:19px;
+`
 
 export const ViewButton = styled.button`
   padding: 5px 10px;

@@ -2,7 +2,7 @@ import * as React from 'react';
 // utils
 import { useQuery } from '@md-utils/mock/query';
 // mock
-import { Person, people } from '@md-modules/shared/mock';
+import { Person, people } from '@md-modules/shared/mock/star-wars';
 
 interface Context {
   people: Person[] | undefined;

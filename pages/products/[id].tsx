@@ -1,10 +1,12 @@
-import { MainLayout } from '@md-modules/shared/layouts/main';
+import { ProductContainer } from '@md-market/product';
+import * as React from 'react';
+import { ProductsLayout } from '@md-modules/shared/layouts/market';
 
 const ProductPage = ()=>{
   return (
-    <MainLayout>
-      <div>hello</div>
-    </MainLayout>
+    <ProductsLayout>
+      <ProductContainer/>
+    </ProductsLayout>
   )
 }
 export default ProductPage

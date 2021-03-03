@@ -11,7 +11,9 @@ export const colors = {
   gray500: '#21293d',
   gray600: '#191e2d',
   // other
-  white: '#fff'
+  white: '#fff',
+  silver: '#B5B5B5',
+  darkblack:'#221f1f'
 };
 
 export const templates = {

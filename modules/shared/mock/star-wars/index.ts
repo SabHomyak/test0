@@ -64,18 +64,3 @@ export const people: Person[] = [
     birth_year: '52BBY'
   }
 ];
-
-export interface Product {
-  name: string;
-  id: string;
-  description: string
-}
-
-export const products: Product[] = [
-  { id: '1',name:'Fridge',description:'super fridge'},
-  { id: '2',name:'Washer',description:'super fridge'},
-  { id: '3',name:'Iron',description:'super fridge'},
-  { id: '4',name:'TV',description:'super fridge'},
-  { id: '5',name:'Kettle',description:'super fridge'},
-  { id: '6',name:'Vacuum cleaner',description:'super fridge'}
-];

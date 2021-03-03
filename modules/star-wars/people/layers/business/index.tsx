@@ -2,7 +2,7 @@ import * as React from 'react';
 // context
 import { PeopleAPIContext } from '@md-sw-people/layers/api/people';
 // mock
-import { Person } from '@md-modules/shared/mock';
+import { Person } from '@md-modules/shared/mock/star-wars';
 
 interface Context {
   peopleList: Pick<Person, 'id' | 'name'>[];

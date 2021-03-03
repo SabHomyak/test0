@@ -6,8 +6,7 @@ export const Wrapper = styled.div`
   left: 0;
   right: 0;
 
-  background-color: ${({ theme }) => theme.colors.gray500};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.gray600};
+  background-color: ${({ theme }) => theme.colors.darkblack};
 `;
 
 export const IWrapper = styled.div`
@@ -19,7 +18,6 @@ export const IWrapper = styled.div`
 
   max-width: ${({ theme }) => theme.dimensions.pageMaxWidth}px;
 `;
-
 export const LWrapper = styled.div`
   flex: 1;
 
@@ -38,3 +36,16 @@ export const RWrapper = styled.div`
   ${({ theme }) => theme.templates.centerItems};
 `;
 
+export const BWrapper = styled.div`
+    height:30px;
+    width:30px;
+    &:hover{
+      cursor:pointer;
+    }
+`
+
+export const Cart = styled.img`
+  height:100%;
+  width:100%;
+  display:block;
+`
