@@ -1,82 +1,84 @@
 import * as React from 'react';
-import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from '@md-market/cart/layers/presentation/views';
-import { useContext, useEffect, useRef, useState } from 'react';
-import { ShowCartContext } from '@md-modules/shared/layouts/market';
+import {
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  OrderPrice, Table, Tbody, Thead
+} from '@md-market/cart/layers/presentation/views';
+import { useContext, useEffect } from 'react';
 import { ContentLoader } from '@md-ui/loaders/content-loader';
-import { Cart, CartProduct, Count } from '@md-modules/shared/mock/market/cart';
-import { CartAPIContext } from '@md-modules/shared/layouts/market/layers/api/cart';
-import { CartBLContext, setCart } from '@md-modules/shared/layouts/market/layers/business';
+import { CartAPIContext } from '@md-modules/market/cart/layers/api/cart';
+import { ContextApp } from '../../../../../redux/reducer';
+import { ID } from '@md-modules/shared/mock/market/cart';
 
+interface Props {
+  itemDecreaseButtonHandler: (id: ID) => void;
+  closeHandler: () => void;
+}
 
-const CartPresentation: React.FC = () => {
-  const setShowCart = React.useContext(ShowCartContext);
+const CartPresentation: React.FC<Props> = ({ itemDecreaseButtonHandler, closeHandler }) => {
   const { isLoading } = useContext(CartAPIContext);
-  const { cart: productsFromBL } = useContext(CartBLContext);
-
-  const [products, setProducts] = useState<Cart | undefined>(productsFromBL);
-  const savedState = useRef<Cart>();
-  savedState.current = products;
-  useEffect(() => {
-    if (productsFromBL !== undefined && typeof products === 'undefined') {
-      setProducts(productsFromBL);
-    }
-    return () => {
-      if (productsFromBL && savedState.current) {
-        setCart(savedState.current);
-      }
-    };
-  }, [productsFromBL]);
-  let viewProducts: JSX.Element[] = [];
+  const { state } = useContext(ContextApp);
+  const products = state.cart;
+  let viewProducts: any[] = [];
   let totalCount = 0;
+  useEffect(() => {
+    if (products?.size === 0) {
+      closeHandler();
+    }
+  });
   if (products) {
-    viewProducts = Array
-      .from(products)
-      .map(([product, count]) => {
-        totalCount += product.price * count;
-        return <div
-          key={product.id}>
-          <span>{product.name} - {count} </span>
+    viewProducts = Array.from(products);
+    viewProducts = viewProducts.map(([product, count]) => {
+      totalCount += product.price * count;
+      return <tr
+        key={product.id}>
+        <th>{product.name}</th>
+        <th>{count}</th>
+        <th>{product.price}</th>
+        <th>
           <button onClick={() => {
-            setProducts((prevState) => {
-              if (prevState) {
-                const newCart = new Map<CartProduct, Count>(prevState);
-                const count = newCart.get(product);
-                if (count && count > 1) {
-                  newCart.set(product, count - 1);
-                } else {
-                  newCart.delete(product);
-                }
-                return newCart;
-              }
-              return new Map<CartProduct, Count>();
-            });
+            itemDecreaseButtonHandler(product.id);
           }}>-
           </button>
-        </div>;
-      });
+        </th>
+      </tr>;
+    });
   }
-  if (productsFromBL && products?.size === 0) {
-    setShowCart(false);
-  }
+
   return (
     <ContentLoader isLoading={isLoading}>
-      <Modal onClick={(event: React.SyntheticEvent) => {
-        if (event.target === event.currentTarget) {
-          setShowCart(false);
-        }
-      }}>
+      <Modal
+        onClick={(event: React.SyntheticEvent) => {
+          if (event.target === event.currentTarget) {
+            closeHandler();
+          }
+        }}>
         <ModalContent>
           <ModalHeader>
             <span className="close" onClick={() => {
-              setShowCart(false);
+              closeHandler();
             }}>&times;</span>
             <h2>Cart</h2>
           </ModalHeader>
           <ModalBody>
-            {viewProducts}
+            <Table >
+              <Thead>
+              <tr>
+                <th>name</th>
+                <th>quantity</th>
+                <th>price</th>
+              </tr>
+              </Thead>
+              <tbody>
+              {viewProducts}
+              </tbody>
+            </Table>
           </ModalBody>
           <ModalFooter>
-            <h3>{totalCount}$</h3>
+            <OrderPrice>{totalCount}$</OrderPrice>
           </ModalFooter>
         </ModalContent>
         <style jsx>

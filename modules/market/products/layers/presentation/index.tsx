@@ -4,7 +4,7 @@ import { ContentLoader } from '@md-ui/loaders/content-loader';
 import { ProductBLContext } from '@md-m-products/layers/business';
 import { Wrapper } from './views';
 import { Card } from '../../components/card';
-import { addProduct } from '@md-modules/shared/layouts/market/layers/business';
+import { addProduct } from '../../../../../redux/actionCreators';
 
 
 const ProductsPresentation = () => {

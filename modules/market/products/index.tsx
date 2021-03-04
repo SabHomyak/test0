@@ -4,13 +4,13 @@ import { ProductsBLContextProvider } from '@md-modules/market/products/layers/bu
 import { ProductsPresentation } from '@md-modules/market/products/layers/presentation';
 
 
-const ProductsContainer = () => (
+const Container = () => (
   <ProductsAPIContextProvider>
     <ProductsBLContextProvider>
       <ProductsPresentation/>
     </ProductsBLContextProvider>
   </ProductsAPIContextProvider>
 );
-
+const ProductsContainer = React.memo(Container);
 
 export { ProductsContainer };

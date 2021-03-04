@@ -11,8 +11,13 @@ import {
   ProductName, Wrapper
 } from './views';
 import { Button } from '@md-ui/buttons/button-cart';
+import { ID } from '@md-modules/shared/mock/market/cart';
 
-const ProductPresentation = () => {
+interface Props {
+  buttonHandler: (id: ID) => void
+}
+
+const ProductPresentation: React.FC<Props> = ({ buttonHandler }) => {
   const { isLoading } = React.useContext(ProductAPIContext);
   const { productInfo } = React.useContext(ProductBLContext);
   return (
@@ -22,13 +27,11 @@ const ProductPresentation = () => {
           <ProductImgContainer>
             <img src='/static/images/market/download.jpg' alt='product'/>
             <Button text={'Add to cart'} callback={() => {
-              const c = 3333;
-              // eslint-disable-next-line no-console
-              console.log(c);
+              buttonHandler(productInfo.id);
             }}/>
           </ProductImgContainer>
           <ProductDetailsContainer>
-            <ProductName>{productInfo.name} wiwat</ProductName>
+            <ProductName>{productInfo.name}</ProductName>
             <ProductInfoContainer>
               {productInfo.description}
             </ProductInfoContainer>
@@ -38,7 +41,6 @@ const ProductPresentation = () => {
     </ContentWrapper>
   );
 };
-
 
 
 export { ProductPresentation };

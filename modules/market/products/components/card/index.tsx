@@ -8,18 +8,12 @@ import {
 } from '@md-m-products/components/card/views';
 import { ProductLink } from '@md-m-products/components/product-link';
 import { Button } from '@md-ui/buttons/button-cart';
-import { CartProduct } from '@md-modules/shared/mock/market/cart';
-import { addProduct } from '@md-market/cart/layers/business';
+import { CartProduct, ID } from '@md-modules/shared/mock/market/cart';
 
-// interface Props {
-//   id: string
-//   name: string,
-//   price: number
-// }
 
 interface Props {
   product: CartProduct,
-  addProductHandler: (product: CartProduct) => void
+  addProductHandler: (id: ID) => void
 }
 
 const Card: React.FC<Props> = ({ product, addProductHandler }) => {
@@ -33,9 +27,9 @@ const Card: React.FC<Props> = ({ product, addProductHandler }) => {
       </CardImgWrapper>
       <CardFooter>
         <Button text={'Add to cart'} callback={() => {
-          addProductHandler(product);
+          addProductHandler(product.id);
         }}/>
-        <Price>price:{product.price}$</Price>
+        <Price>{product.price}$</Price>
         <ProductLink prodId={product.id}>
           <ViewButton>Details</ViewButton>
         </ProductLink>

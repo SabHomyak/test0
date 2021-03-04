@@ -33,7 +33,6 @@ export const ProductDetailsContainer = styled.div`
 
 export const ProductName = styled.h2`
   text-align: center;
-  color: ${({ theme }) => theme.colors.white};
 `;
 
 export const ProductInfoContainer = styled.div``;

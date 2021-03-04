@@ -26,19 +26,41 @@ export const ModalContent = styled.div`
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
   animation-duration: 0.4s
-`
-export const  ModalHeader = styled.div`
+`;
+export const ModalHeader = styled.div`
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: #029742;
   color: white;
-`
+`;
 
 export const ModalBody = styled.div`
   padding: 30px;
-`
+`;
 
 export const ModalFooter = styled.div`
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: #029742;
   color: white;
-`
+`;
+
+export const OrderPrice = styled.h2`
+  text-align:right;
+`;
+export const Table = styled.table`
+  width:100%;
+  text-align:left;
+  border-collapse:collapse;
+`;
+
+export const Thead = styled.thead`
+  &:after {
+    content:"@@@";
+    display:block;
+    line-height:13px;
+    text-indent:-99999px;
+}
+`;
+
+export const Tbody = styled.tbody`
+  
+`;

@@ -2,14 +2,15 @@ import styled from 'styled-components';
 
 export const CardWrapper = styled.div`
   border-radius:5px;
+  border:.5px solid ${({theme}) => theme.colors.darkblack};
   overflow:hidden;
-
 `;
 
 export const CardImgWrapper = styled.div`
   height:300px;
   position: relative;
-  border:.5px solid ${({theme}) => theme.colors.silver};
+  border-bottom:.5px solid ${({theme}) => theme.colors.darkblack};
+  border-top:.5px solid ${({theme}) => theme.colors.darkblack};
 `;
 
 export const CardHeader = styled.div`
@@ -57,13 +58,13 @@ export const ViewButton = styled.button`
   padding: 5px 10px;
   background-color: transparent;
   border-radius: 3px;
-  border: 1px solid ${({ theme }) => theme.colors.green200};
+  border: 1px solid ${({ theme }) => theme.colors.darkblack};
   color: #fff;
   outline: none;
   transition: background-color 0.2s linear;
   cursor: pointer;
 
   &:hover {
-    background-color: rgba(135, 204, 67, 0.8);
+    background-color: ${({ theme }) => theme.colors.darkblack};
   }
 `;

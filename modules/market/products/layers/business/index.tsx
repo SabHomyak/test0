@@ -20,9 +20,7 @@ const ProductsBLContextProvider: React.FC = ({ children }) => {
       return [];
     }
 
-    return products.map(({ id, name,price }) => ({
-      name, id,price
-    }));
+    return products
   }, [typeof products === 'undefined']);
 
   return <ProductBLContext.Provider

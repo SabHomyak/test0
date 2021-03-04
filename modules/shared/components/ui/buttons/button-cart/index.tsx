@@ -16,16 +16,6 @@ const Button: React.FC<Props> = ({ text,callback }) => (
 
 const ButtonWrapper = styled.button`
     padding: 5px 10px;
-
-    a {
-      text - decoration: none;
-      transition: opacity 0.3s ease-in-out;
-
-      color: ${({ theme }) => theme.colors.white};
-
-    &:hover {
-      opacity: 0.8;
-    }
-    }
+    border-radius:5px;
     `;
 export { Button };

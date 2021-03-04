@@ -7,5 +7,5 @@ export type ID = string
 export type Cart = Map<CartProduct, Count>
 
 export const cartProducts: Cart = new Map<CartProduct, Count>();
-cartProducts.set(products[0], 2);
-cartProducts.set(products[1], 4);
+// cartProducts.set(products[0], 2);
+// cartProducts.set(products[1], 4);

@@ -2,26 +2,33 @@ import { Wrapper } from './views';
 import * as React from 'react';
 import { Header } from '@md-ui/headers/products';
 import CartContainer from '@md-modules/market/cart';
-import { useState } from 'react';
-import { CartAPIContextProvider } from './layers/api/cart';
-import { CartBlContextProvider } from './layers/business';
+import { useEffect, useReducer } from 'react';
+import {
+  ContextApp,
+  initialState,
+  reducer, State
+} from '../../../../redux/reducer';
 
-let ShowCartContext: React.Context<React.Dispatch<React.SetStateAction<boolean>>>;
+export let dispatch: any;
+export let state: State;
+
 
 const ProductsLayout: React.FC = ({ children }) => {
-  const [showCart, setShowCart] = useState<boolean>(false);
-  ShowCartContext = React.createContext(setShowCart);
+  [state, dispatch] = useReducer(reducer, initialState);
+  useEffect(() => {
+    if (state.cart) {
+      localStorage.setItem('cartState', JSON.stringify(Array.from(state.cart)));
+    }
+  }, [state]);
   return (
     <Wrapper>
-      <CartAPIContextProvider>
-        <CartBlContextProvider>
-          <Header/>
-          {children}
-          {showCart && <CartContainer/>}
-        </CartBlContextProvider>
-      </CartAPIContextProvider>
+      <ContextApp.Provider value={{ state, dispatch }}>
+        <Header/>
+        {children}
+        <CartContainer/>
+      </ContextApp.Provider>
     </Wrapper>
   );
 };
 
-export { ProductsLayout, ShowCartContext };
+export { ProductsLayout };

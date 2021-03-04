@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme } from '@md-styles/styled/theme';
 
 export const Wrapper = styled.div`
   position: fixed;
@@ -42,10 +43,14 @@ export const BWrapper = styled.div`
     &:hover{
       cursor:pointer;
     }
-`
+`;
+
+export const Orders = styled.span`
+  color:${({ theme }) => theme.colors.white}
+`;
 
 export const Cart = styled.img`
   height:100%;
   width:100%;
   display:block;
-`
+`;

@@ -18,7 +18,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <meta charSet='utf-8'/>
       </Head>
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+          <Component {...pageProps} />
       </ThemeProvider>
       <GlobalStyles/>
     </>
