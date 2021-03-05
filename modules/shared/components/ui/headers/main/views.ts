@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
 export const IWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items:center;
+  align-items: center;
   padding: 5px 10px;
   margin: 0 auto;
 
@@ -37,4 +37,3 @@ export const RWrapper = styled.div`
 
   ${({ theme }) => theme.templates.centerItems};
 `;
-

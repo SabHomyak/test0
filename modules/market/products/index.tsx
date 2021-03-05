@@ -3,11 +3,10 @@ import { ProductsAPIContextProvider } from '@md-modules/market/products/layers/a
 import { ProductsBLContextProvider } from '@md-modules/market/products/layers/business';
 import { ProductsPresentation } from '@md-modules/market/products/layers/presentation';
 
-
 const Container = () => (
   <ProductsAPIContextProvider>
     <ProductsBLContextProvider>
-      <ProductsPresentation/>
+      <ProductsPresentation />
     </ProductsBLContextProvider>
   </ProductsAPIContextProvider>
 );

@@ -1,3 +1,4 @@
+//types
 import { Cart, ID } from '@md-modules/shared/mock/market/cart';
 
 export enum Actions {
@@ -7,6 +8,6 @@ export enum Actions {
 }
 
 export type Action =
-  { type: Actions.SET_CART, cart: Cart } |
-  { type: Actions.ADD_PRODUCT, id: ID } |
-  { type: Actions.DECREASE_COUNT_PRODUCT, id: ID }
+  | { type: Actions.SET_CART; cart: Cart }
+  | { type: Actions.ADD_PRODUCT; id: ID }
+  | { type: Actions.DECREASE_COUNT_PRODUCT; id: ID };

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { theme } from '@md-styles/styled/theme';
 
 export const Wrapper = styled.div`
   position: fixed;
@@ -13,7 +12,7 @@ export const Wrapper = styled.div`
 export const IWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items:center;
+  align-items: center;
   padding: 5px 10px;
   margin: 0 auto;
 
@@ -38,19 +37,19 @@ export const RWrapper = styled.div`
 `;
 
 export const BWrapper = styled.div`
-    height:30px;
-    width:30px;
-    &:hover{
-      cursor:pointer;
-    }
+  height: 30px;
+  width: 30px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const Orders = styled.span`
-  color:${({ theme }) => theme.colors.white}
+  color: ${({ theme }) => theme.colors.white};
 `;
 
 export const Cart = styled.img`
-  height:100%;
-  width:100%;
-  display:block;
+  height: 100%;
+  width: 100%;
+  display: block;
 `;

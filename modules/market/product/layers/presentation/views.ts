@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
-
   padding: 50px 0;
 `;
 
@@ -20,9 +19,9 @@ export const ProductImgContainer = styled.div`
     width: 100%;
     height: 100%;
   }
-  button{
+  button {
     margin: 20px auto;
-    display:block;
+    display: block;
   }
 `;
 
@@ -35,4 +34,6 @@ export const ProductName = styled.h2`
   text-align: center;
 `;
 
-export const ProductInfoContainer = styled.div``;
+export const ProductInfoContainer = styled.div`
+  font-size: 20px;
+`;

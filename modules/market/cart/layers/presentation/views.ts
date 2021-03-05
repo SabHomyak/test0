@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 
 export const Modal = styled.div`
-  display: block; 
+  display: block;
   position: fixed;
-  z-index: 1; 
-  padding-top: 100px; 
+  z-index: 1;
+  padding-top: 100px;
   left: 0;
   top: 0;
-  width: 100%; 
-  height: 100%; 
-  overflow: auto; 
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4); 
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 `;
 
 export const ModalContent = styled.div`
@@ -21,11 +21,7 @@ export const ModalContent = styled.div`
   padding: 0;
   border: 1px solid #888;
   width: 80%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 `;
 export const ModalHeader = styled.div`
   padding: 2px 16px;
@@ -44,23 +40,32 @@ export const ModalFooter = styled.div`
 `;
 
 export const OrderPrice = styled.h2`
-  text-align:right;
+  text-align: right;
 `;
 export const Table = styled.table`
-  width:100%;
-  text-align:left;
-  border-collapse:collapse;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
 `;
 
 export const Thead = styled.thead`
   &:after {
-    content:"@@@";
-    display:block;
-    line-height:13px;
-    text-indent:-99999px;
-}
+    content: '@@@';
+    display: block;
+    line-height: 13px;
+    text-indent: -99999px;
+  }
 `;
+export const Close = styled.span`
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 
-export const Tbody = styled.tbody`
-  
+  &:hover,
+  &close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
 `;

@@ -1,24 +1,24 @@
 import styled from 'styled-components';
 
 export const CardWrapper = styled.div`
-  border-radius:5px;
-  border:.5px solid ${({theme}) => theme.colors.darkblack};
-  overflow:hidden;
+  border-radius: 5px;
+  border: 0.5px solid ${({ theme }) => theme.colors.darkblack};
+  overflow: hidden;
 `;
 
 export const CardImgWrapper = styled.div`
-  height:300px;
+  height: 300px;
   position: relative;
-  border-bottom:.5px solid ${({theme}) => theme.colors.darkblack};
-  border-top:.5px solid ${({theme}) => theme.colors.darkblack};
+  border-bottom: 0.5px solid ${({ theme }) => theme.colors.darkblack};
+  border-top: 0.5px solid ${({ theme }) => theme.colors.darkblack};
 `;
 
 export const CardHeader = styled.div`
   background-color: ${({ theme }) => theme.colors.silver};
-  display:flex;
-  justify-content:center;
-  padding:3% 0;
-`
+  display: flex;
+  justify-content: center;
+  padding: 3% 0;
+`;
 
 export const CardHeaderTitle = styled.h5`
   font-weight: bold;
@@ -50,9 +50,9 @@ export const CardFooter = styled.div`
 `;
 
 export const Price = styled.div`
-  color:white;
-  font-size:19px;
-`
+  color: white;
+  font-size: 19px;
+`;
 
 export const ViewButton = styled.button`
   padding: 5px 10px;

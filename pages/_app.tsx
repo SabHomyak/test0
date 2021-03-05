@@ -13,14 +13,14 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     <>
       <Head>
         <title>Cultum Starter Kit</title>
-        <link rel='icon' href='/favicon.ico'/>
-        <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'/>
-        <meta charSet='utf-8'/>
+        <link rel='icon' href='/favicon.ico' />
+        <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1' />
+        <meta charSet='utf-8' />
       </Head>
       <ThemeProvider theme={theme}>
-          <Component {...pageProps} />
+        <Component {...pageProps} />
       </ThemeProvider>
-      <GlobalStyles/>
+      <GlobalStyles />
     </>
   );
 };

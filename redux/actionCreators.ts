@@ -1,5 +1,8 @@
+//types
 import { Cart, ID } from '@md-modules/shared/mock/market/cart';
+//functions
 import { dispatch } from '@md-modules/shared/layouts/market';
+//actions
 import { Action, Actions } from './actions';
 
 export const setCartAC = (cart: Cart): Action => ({ type: Actions.SET_CART, cart });

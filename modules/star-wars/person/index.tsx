@@ -11,4 +11,3 @@ const PersonContainer = () => (
   </PersonAPIContextProvider>
 );
 export { PersonContainer };
-

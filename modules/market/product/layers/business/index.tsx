@@ -5,7 +5,7 @@ import { ID } from '@md-modules/shared/mock/market/cart';
 interface ProductInfo {
   name: string;
   description: string;
-  id: ID
+  id: ID;
 }
 
 interface Context {

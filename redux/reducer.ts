@@ -1,21 +1,23 @@
 import * as React from 'react';
+//types
 import { Cart, CartProduct, Count, ID } from '@md-modules/shared/mock/market/cart';
+//mock
 import { products } from '@md-modules/shared/mock/market/products';
+//actions
 import { Action, Actions } from './actions';
 
 //utils
 const findProduct = (id: ID): CartProduct | undefined => {
-  return products.find(product => product.id === id);
+  return products.find((product) => product.id === id);
 };
 
-
 export interface State {
-  cart: Cart | undefined
+  cart: Cart | undefined;
 }
 
 interface Context {
-  state: State
-  dispatch: React.Dispatch<any>
+  state: State;
+  dispatch: React.Dispatch<any>;
 }
 
 export const initialState: State = {
@@ -23,11 +25,9 @@ export const initialState: State = {
 };
 
 export const ContextApp = React.createContext<Context>({
-    state: initialState,
-    dispatch: () => {
-    }
-  }
-);
+  state: initialState,
+  dispatch: () => {}
+});
 
 export const reducer = (state: State, action: Action) => {
   switch (action.type) {
@@ -65,4 +65,3 @@ export const reducer = (state: State, action: Action) => {
       return state;
   }
 };
-

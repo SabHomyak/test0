@@ -5,7 +5,7 @@ import { Logo } from '@md-ui/logos/main';
 // constants
 import { menuItems } from './constants';
 // views
-import { Wrapper, IWrapper, LWrapper, RWrapper} from './views';
+import { Wrapper, IWrapper, LWrapper, RWrapper } from './views';
 
 const Header = () => {
   return (

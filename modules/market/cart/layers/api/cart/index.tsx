@@ -1,9 +1,11 @@
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 // mock
 import { Cart, CartProduct, cartProducts, Count } from '@md-modules/shared/mock/market/cart';
-import { useEffect, useState } from 'react';
 import { Product, products } from '@md-modules/shared/mock/market/products';
+//context
 import { ContextApp } from '../../../../../../redux/reducer';
+//redux
 import { setCart } from '../../../../../../redux/actionCreators';
 
 interface Context {
@@ -24,14 +26,14 @@ const CartAPIContextProvider: React.FC = (props) => {
     const dataFromStorage = localStorage.getItem('cartState');
     if (dataFromStorage) {
       const newData: Cart = new Map<CartProduct, Count>();
-      const localdata: Array<[CartProduct, Count]> = JSON.parse(dataFromStorage);
-      localdata.forEach(([{ id }, count]) => {
-        const product: Product | undefined = products.find(productFromDB => productFromDB.id === id);
+      const localStorageData: Array<[CartProduct, Count]> = JSON.parse(dataFromStorage);
+      localStorageData.forEach(([{ id }, count]) => {
+        const product: Product | undefined = products.find((productFromDB) => productFromDB.id === id);
         if (product) {
           newData.set(product, count);
         }
       });
-      setCart(newData)
+      setCart(newData);
     } else {
       setCart(cartProducts);
     }
@@ -47,6 +49,5 @@ const CartAPIContextProvider: React.FC = (props) => {
     </CartAPIContext.Provider>
   );
 };
-
 
 export { CartAPIContextProvider, CartAPIContext };

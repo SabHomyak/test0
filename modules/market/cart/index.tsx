@@ -1,9 +1,8 @@
-import * as  React from 'react';
+import * as React from 'react';
 import { CartPresentation } from '@md-market/cart/layers/presentation';
 import { CartAPIContextProvider } from '@md-market/cart/layers/api/cart';
 import { useState } from 'react';
 import { decreaseCountProduct } from '../../../redux/actionCreators';
-
 
 let showSetter: (show: boolean) => void;
 export const showCart = (show: boolean): void => {
@@ -16,7 +15,9 @@ const CartContainer: React.FC = () => {
 
   return (
     <CartAPIContextProvider>
-      {show && <CartPresentation itemDecreaseButtonHandler={decreaseCountProduct} closeHandler={() => setShow(false)}/>}
+      {show && (
+        <CartPresentation itemDecreaseButtonHandler={decreaseCountProduct} closeHandler={() => setShow(false)} />
+      )}
     </CartAPIContextProvider>
   );
 };

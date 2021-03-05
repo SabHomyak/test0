@@ -4,12 +4,12 @@ import { ProductBLContextProvider } from '@md-m-product/layers/business';
 import { ProductPresentation } from '@md-m-product/layers/presentation';
 import { addProduct } from '../../../redux/actionCreators';
 
-
-const ProductContainer = () => (
+const Container = () => (
   <ProductAPIContextProvider>
     <ProductBLContextProvider>
-      <ProductPresentation buttonHandler={addProduct}/>
+      <ProductPresentation buttonHandler={addProduct} />
     </ProductBLContextProvider>
   </ProductAPIContextProvider>
 );
+const ProductContainer = React.memo(Container);
 export { ProductContainer };

@@ -1,11 +1,13 @@
 import * as React from 'react';
 
-
+//types
 import { Product } from '@md-modules/shared/mock/market/products';
+
+//context
 import { ProductsAPIContext } from '@md-modules/market/products/layers/api/products';
 
 interface Context {
-  productList: Pick<Product, 'id' | 'name' | 'price'>[]
+  productList: Pick<Product, 'id' | 'name' | 'price'>[];
 }
 
 const ProductBLContext = React.createContext<Context>({
@@ -20,15 +22,17 @@ const ProductsBLContextProvider: React.FC = ({ children }) => {
       return [];
     }
 
-    return products
+    return products;
   }, [typeof products === 'undefined']);
 
-  return <ProductBLContext.Provider
-    value={{
-      productList
-    }}
-  >
-    {children}
-  </ProductBLContext.Provider>;
+  return (
+    <ProductBLContext.Provider
+      value={{
+        productList
+      }}
+    >
+      {children}
+    </ProductBLContext.Provider>
+  );
 };
 export { ProductsBLContextProvider, ProductBLContext };

@@ -13,7 +13,7 @@ export const colors = {
   // other
   white: '#fff',
   silver: '#B5B5B5',
-  darkblack:'#221f1f'
+  darkblack: '#221f1f'
 };
 
 export const templates = {
