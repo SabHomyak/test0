@@ -11,24 +11,16 @@ import { ContextApp } from '../../../../../../redux/reducer';
 import { showCart } from '@md-market/cart';
 
 const Header: React.FC = () => {
-  const { state } = React.useContext(ContextApp);
-  const products = state.cart;
-
-  let sizeOrder = 0;
-  if (products) {
-    for (const count of products.values()) {
-      sizeOrder += count;
-    }
-  }
+  const sizeOrder = 109;
   return (
     <Wrapper>
       <IWrapper>
         <LWrapper>
-          <Logo />
+          <Logo/>
         </LWrapper>
         <RWrapper>
           {menuItems.map(({ l, h }) => (
-            <MenuItem key={l} href={h} label={l} />
+            <MenuItem key={l} href={h} label={l}/>
           ))}
         </RWrapper>
         <BWrapper
@@ -36,7 +28,7 @@ const Header: React.FC = () => {
             showCart(true);
           }}
         >
-          <Cart src={'/static/images/UI/basket2.png'} />
+          <Cart src={'/static/images/UI/basket2.png'}/>
         </BWrapper>
         {!!sizeOrder && <Orders>{sizeOrder}</Orders>}
       </IWrapper>
