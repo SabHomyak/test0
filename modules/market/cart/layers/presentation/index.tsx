@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 //styles
 import {
   Close,
@@ -14,12 +14,9 @@ import {
 } from '@md-market/cart/layers/presentation/views';
 //utils
 import { ContentLoader } from '@md-ui/loaders/content-loader';
-//context
-import { CartAPIContext } from '@md-modules/market/cart/layers/api/cart';
-//redux
-import { ContextApp } from '../../../../../redux/reducer';
+
 //mock
-import { ID } from '@md-modules/shared/mock/market/cart';
+import { cartProducts, ID } from '@md-modules/shared/mock/market/cart';
 
 interface Props {
   itemDecreaseButtonHandler: (id: ID) => void;
@@ -27,10 +24,9 @@ interface Props {
 }
 
 const CartPresentation: React.FC<Props> = ({ itemDecreaseButtonHandler, closeHandler }) => {
-  const { isLoading } = useContext(CartAPIContext);
-  const { state } = useContext(ContextApp);
-
-  const products = state.cart;
+  // const { isLoading } = useContext(CartAPIContext);
+  const isLoading = false;
+  const products = cartProducts;
   let viewProducts: any[] = [];
   let totalCount = 0;
 

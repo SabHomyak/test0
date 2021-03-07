@@ -8,8 +8,6 @@ import { ContentLoader } from '@md-ui/loaders/content-loader';
 import { Wrapper } from './views';
 //components
 import { Card } from '../../components/card';
-//AC
-import { addProduct } from '../../../../../redux/actionCreators';
 
 const ProductsPresentation = () => {
   const { isLoading } = React.useContext(ProductsAPIContext);
@@ -19,7 +17,8 @@ const ProductsPresentation = () => {
     <Wrapper>
       <ContentLoader isLoading={isLoading}>
         {productList.map((product) => (
-          <Card key={product.id} product={product} addProductHandler={addProduct} />
+          <Card key={product.id} product={product} addProductHandler={() => {
+          }}/>
         ))}
       </ContentLoader>
     </Wrapper>
