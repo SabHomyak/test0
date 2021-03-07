@@ -5,13 +5,11 @@ import { Cart, BWrapper, IWrapper, LWrapper, RWrapper, Wrapper, Orders } from '@
 import { menuItems } from '@md-ui/headers/main/constants';
 import { MenuItem } from '@md-ui/menu-items/main';
 import { Logo } from '@md-ui/logos/product';
-//redux
-import { ContextApp } from '../../../../../../redux/reducer';
-//functions
-import { showCart } from '@md-market/cart';
+import { CartContext } from '@md-modules/shared/contexts/CartContext';
 
 const Header: React.FC = () => {
-  const sizeOrder = 109;
+  const { cart } = React.useContext(CartContext);
+  const orders: number = Array.from(cart?.values() || []).reduce((acc, count) => (acc + count), 0);
   return (
     <Wrapper>
       <IWrapper>
@@ -25,12 +23,11 @@ const Header: React.FC = () => {
         </RWrapper>
         <BWrapper
           onClick={() => {
-            showCart(true);
           }}
         >
           <Cart src={'/static/images/UI/basket2.png'}/>
         </BWrapper>
-        {!!sizeOrder && <Orders>{sizeOrder}</Orders>}
+        {<Orders>{orders}</Orders>}
       </IWrapper>
     </Wrapper>
   );

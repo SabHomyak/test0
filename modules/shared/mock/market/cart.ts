@@ -8,4 +8,5 @@ export type Cart = Map<CartProduct, Count>;
 export const cartProducts: Cart = new Map<CartProduct, Count>();
 cartProducts.set(products[0], 1);
 cartProducts.set(products[1], 3);
-cartProducts.set(products[2], 2);
+cartProducts.set(products[2], 3);
+cartProducts.set(products[3], 5);

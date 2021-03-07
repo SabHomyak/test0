@@ -42,20 +42,7 @@ export const ModalFooter = styled.div`
 export const OrderPrice = styled.h2`
   text-align: right;
 `;
-export const Table = styled.table`
-  width: 100%;
-  text-align: left;
-  border-collapse: collapse;
-`;
 
-export const Thead = styled.thead`
-  &:after {
-    content: '@@@';
-    display: block;
-    line-height: 13px;
-    text-indent: -99999px;
-  }
-`;
 export const Close = styled.span`
   color: white;
   float: right;

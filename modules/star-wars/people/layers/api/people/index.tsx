@@ -17,7 +17,6 @@ const PeopleAPIContext = React.createContext<Context>({
 const PeopleAPIContextProvider: React.FC = ({ children }) => {
   // make api call here
   const { data, loading } = useQuery(people);
-
   return (
     <PeopleAPIContext.Provider
       value={{

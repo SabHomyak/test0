@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useEffect } from 'react';
 //styles
 import {
   Close,
@@ -8,15 +7,15 @@ import {
   ModalContent,
   ModalFooter,
   ModalHeader,
-  OrderPrice,
-  Table,
-  Thead
+  OrderPrice
 } from '@md-market/cart/layers/presentation/views';
 //utils
 import { ContentLoader } from '@md-ui/loaders/content-loader';
 
 //mock
-import { cartProducts, ID } from '@md-modules/shared/mock/market/cart';
+import { CartProduct, Count, ID } from '@md-modules/shared/mock/market/cart';
+import { CartContext } from '@md-modules/shared/contexts/CartContext';
+import { CartTable } from '@md-market/cart/components/table';
 
 interface Props {
   itemDecreaseButtonHandler: (id: ID) => void;
@@ -24,39 +23,10 @@ interface Props {
 }
 
 const CartPresentation: React.FC<Props> = ({ itemDecreaseButtonHandler, closeHandler }) => {
-  // const { isLoading } = useContext(CartAPIContext);
-  const isLoading = false;
-  const products = cartProducts;
-  let viewProducts: any[] = [];
-  let totalCount = 0;
+  const { isLoading, cart } = React.useContext(CartContext);
 
-  useEffect(() => {
-    if (products?.size === 0) {
-      closeHandler();
-    }
-  });
-  if (products) {
-    viewProducts = Array.from(products);
-    viewProducts = viewProducts.map(([product, count]) => {
-      totalCount += product.price * count;
-      return (
-        <tr key={product.id}>
-          <th>{product.name}</th>
-          <th>{count}</th>
-          <th>{product.price}</th>
-          <th>
-            <button
-              onClick={() => {
-                itemDecreaseButtonHandler(product.id);
-              }}
-            >
-              -
-            </button>
-          </th>
-        </tr>
-      );
-    });
-  }
+  const totalCount = Array.from(cart || new Map<CartProduct, Count>())
+    .reduce((acc, [product, count]) => (acc + (product.price * count)), 0);
 
   return (
     <ContentLoader isLoading={isLoading}>
@@ -79,23 +49,13 @@ const CartPresentation: React.FC<Props> = ({ itemDecreaseButtonHandler, closeHan
             <h2>Cart</h2>
           </ModalHeader>
           <ModalBody>
-            <Table>
-              <Thead>
-                <tr>
-                  <th>name</th>
-                  <th>quantity</th>
-                  <th>price</th>
-                </tr>
-              </Thead>
-              <tbody>{viewProducts}</tbody>
-            </Table>
+            <CartTable th={['name', 'count', 'price']} products={cart ?? new Map<CartProduct, Count>()}/>
           </ModalBody>
           <ModalFooter>
             <OrderPrice>{totalCount}$</OrderPrice>
           </ModalFooter>
         </ModalContent>
       </Modal>
-      ;
     </ContentLoader>
   );
 };

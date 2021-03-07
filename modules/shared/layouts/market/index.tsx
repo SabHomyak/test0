@@ -4,15 +4,18 @@ import { Wrapper } from './views';
 //components
 import { Header } from '@md-ui/headers/products';
 import CartContainer from '@md-modules/market/cart';
+import { CartContextProvider } from '@md-modules/shared/contexts/CartContext';
 
 export let dispatch: any;
 
 const ProductsLayout: React.FC = ({ children }) => {
   return (
     <Wrapper>
-      <Header/>
-      {children}
-      <CartContainer/>
+      <CartContextProvider>
+        <Header/>
+        {children}
+        <CartContainer/>
+      </CartContextProvider>
     </Wrapper>
   );
 };
