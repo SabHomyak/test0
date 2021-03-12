@@ -9,16 +9,16 @@ import { CartContext } from '@md-modules/shared/contexts/CartContext';
 
 const Header: React.FC = () => {
   const { cart, modal } = React.useContext(CartContext);
-  const orders: number = cart.products?.reduce((acc, product) => (acc + product.count), 0) ?? 0;
+  const orders: number = cart.products?.reduce((acc, product) => acc + product.count, 0) ?? 0;
   return (
     <Wrapper>
       <IWrapper>
         <LWrapper>
-          <Logo/>
+          <Logo />
         </LWrapper>
         <RWrapper>
           {menuItems.map(({ l, h }) => (
-            <MenuItem key={l} href={h} label={l}/>
+            <MenuItem key={l} href={h} label={l} />
           ))}
         </RWrapper>
         <BWrapper
@@ -28,9 +28,9 @@ const Header: React.FC = () => {
             }
           }}
         >
-          <Cart src={'/static/images/UI/basket2.png'}/>
+          <Cart src={'/static/images/UI/basket2.png'} />
         </BWrapper>
-        {orders !==0 && <Orders>{orders}</Orders>}
+        {orders !== 0 && <Orders>{orders}</Orders>}
       </IWrapper>
     </Wrapper>
   );

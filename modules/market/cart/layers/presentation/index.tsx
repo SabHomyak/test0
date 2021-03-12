@@ -20,12 +20,11 @@ import { CartContext } from '@md-modules/shared/contexts/CartContext';
 //components
 import { CartTable } from '@md-market/cart/components/table';
 
-
 const CartPresentation: React.FC = () => {
   const { isLoading, cart, modal } = React.useContext(CartContext);
 
   const totalCount = cart.products?.reduce((acc, product: ProductCart) => {
-    return acc + (product.count * product.price);
+    return acc + product.count * product.price;
   }, 0);
 
   useEffect(() => {
@@ -55,7 +54,7 @@ const CartPresentation: React.FC = () => {
             <h2>Cart</h2>
           </ModalHeader>
           <ModalBody>
-            <CartTable/>
+            <CartTable />
           </ModalBody>
           <ModalFooter>
             <OrderPrice>{totalCount}$</OrderPrice>

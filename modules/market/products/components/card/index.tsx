@@ -30,7 +30,7 @@ const Card: React.FC<Props> = ({ product, addProductHandler }) => {
         <CardHeaderTitle>{product.name}</CardHeaderTitle>
       </CardHeader>
       <CardImgWrapper>
-        <CardImg src={'/static/images/market/download.jpg'} alt={`${product.name}-${product.id}`}/>
+        <CardImg src={'/static/images/market/download.jpg'} alt={`${product.name}-${product.id}`} />
       </CardImgWrapper>
       <CardFooter>
         <Button

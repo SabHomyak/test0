@@ -12,9 +12,9 @@ const ProductsLayout: React.FC = ({ children }) => {
   return (
     <Wrapper>
       <CartContextProvider>
-        <Header/>
+        <Header />
         {children}
-        <CartContainer/>
+        <CartContainer />
       </CartContextProvider>
     </Wrapper>
   );

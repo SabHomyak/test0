@@ -18,7 +18,6 @@ import { Button } from '@md-ui/buttons/button-cart';
 
 import { CartContext } from '@md-modules/shared/contexts/CartContext';
 
-
 const ProductPresentation: React.FC = () => {
   const { isLoading } = React.useContext(ProductAPIContext);
   const { productInfo } = React.useContext(ProductBLContext);
@@ -29,7 +28,7 @@ const ProductPresentation: React.FC = () => {
       <Wrapper>
         <ContentLoader isLoading={isLoading}>
           <ProductImgContainer>
-            <img src='/static/images/market/download.jpg' alt='product'/>
+            <img src='/static/images/market/download.jpg' alt='product' />
             <Button
               text={'Add to cart'}
               callback={() => {

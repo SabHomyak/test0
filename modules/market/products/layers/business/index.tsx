@@ -6,7 +6,7 @@ import { Product } from '@md-modules/shared/mock/market/products';
 //context
 import { ProductsAPIContext } from '@md-modules/market/products/layers/api/products';
 
-export type ProductInfo = Pick<Product, 'id' | 'name' | 'price'>
+export type ProductInfo = Pick<Product, 'id' | 'name' | 'price'>;
 
 interface Context {
   productList: ProductInfo[];

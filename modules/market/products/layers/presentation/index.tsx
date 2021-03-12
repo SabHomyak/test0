@@ -19,7 +19,7 @@ const ProductsPresentation = () => {
     <Wrapper>
       <ContentLoader isLoading={isLoading}>
         {productList.map((product) => (
-          <Card key={product.id} product={product} addProductHandler={cart.addProduct}/>
+          <Card key={product.id} product={product} addProductHandler={cart.addProduct} />
         ))}
       </ContentLoader>
     </Wrapper>
