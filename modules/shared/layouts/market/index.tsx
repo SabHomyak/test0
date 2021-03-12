@@ -3,10 +3,9 @@ import * as React from 'react';
 import { Wrapper } from './views';
 //components
 import { Header } from '@md-ui/headers/products';
-import CartContainer from '@md-modules/market/cart';
+import { CartContainer } from '@md-modules/market/cart';
 import { CartContextProvider } from '@md-modules/shared/contexts/CartContext';
 
-export let dispatch: any;
 
 const ProductsLayout: React.FC = ({ children }) => {
   return (
