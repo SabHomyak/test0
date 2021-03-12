@@ -1,15 +1,14 @@
 import * as React from 'react';
 import { CartPresentation } from '@md-market/cart/layers/presentation';
-import { useState } from 'react';
+import { CartContext } from '@md-modules/shared/contexts/CartContext';
 
 
 const CartContainer: React.FC = () => {
-  const [show, setShow] = useState(true);
+  const { modal } = React.useContext(CartContext);
   return (
     <>
-      {show && (
-        <CartPresentation itemDecreaseButtonHandler={() => {
-        }} closeHandler={() => setShow(false)}/>
+      {modal.show && (
+        <CartPresentation/>
       )}
     </>
   );

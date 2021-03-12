@@ -8,8 +8,8 @@ import { Logo } from '@md-ui/logos/product';
 import { CartContext } from '@md-modules/shared/contexts/CartContext';
 
 const Header: React.FC = () => {
-  const { cart } = React.useContext(CartContext);
-  const orders: number = Array.from(cart?.values() || []).reduce((acc, count) => (acc + count), 0);
+  const { cart, modal } = React.useContext(CartContext);
+  const orders: number = cart.products?.reduce((acc, product) => (acc + product.count), 0) ?? 0;
   return (
     <Wrapper>
       <IWrapper>
@@ -23,11 +23,14 @@ const Header: React.FC = () => {
         </RWrapper>
         <BWrapper
           onClick={() => {
+            if (orders != 0) {
+              modal.setShow(true);
+            }
           }}
         >
           <Cart src={'/static/images/UI/basket2.png'}/>
         </BWrapper>
-        {<Orders>{orders}</Orders>}
+        {orders !==0 && <Orders>{orders}</Orders>}
       </IWrapper>
     </Wrapper>
   );

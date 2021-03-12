@@ -15,27 +15,25 @@ import {
 } from './views';
 //UI
 import { Button } from '@md-ui/buttons/button-cart';
-//types
-import { ID } from '@md-modules/shared/mock/market/cart';
 
-interface Props {
-  buttonHandler: (id: ID) => void;
-}
+import { CartContext } from '@md-modules/shared/contexts/CartContext';
 
-const ProductPresentation: React.FC<Props> = ({ buttonHandler }) => {
+
+const ProductPresentation: React.FC = () => {
   const { isLoading } = React.useContext(ProductAPIContext);
   const { productInfo } = React.useContext(ProductBLContext);
+  const { cart } = React.useContext(CartContext);
 
   return (
     <ContentWrapper>
       <Wrapper>
         <ContentLoader isLoading={isLoading}>
           <ProductImgContainer>
-            <img src='/static/images/market/download.jpg' alt='product' />
+            <img src='/static/images/market/download.jpg' alt='product'/>
             <Button
               text={'Add to cart'}
               callback={() => {
-                buttonHandler(productInfo.id);
+                cart.addProduct(productInfo.id);
               }}
             />
           </ProductImgContainer>

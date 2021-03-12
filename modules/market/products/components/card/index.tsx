@@ -15,10 +15,11 @@ import { ProductLink } from '@md-m-products/components/product-link';
 //UI
 import { Button } from '@md-ui/buttons/button-cart';
 //types
-import { CartProduct, ID } from '@md-modules/shared/mock/market/cart';
+import { ID } from '@md-modules/shared/mock/market/cart';
+import { ProductInfo } from '@md-m-products/layers/business';
 
 interface Props {
-  product: CartProduct;
+  product: ProductInfo;
   addProductHandler: (id: ID) => void;
 }
 
@@ -29,7 +30,7 @@ const Card: React.FC<Props> = ({ product, addProductHandler }) => {
         <CardHeaderTitle>{product.name}</CardHeaderTitle>
       </CardHeader>
       <CardImgWrapper>
-        <CardImg src={'/static/images/market/download.jpg'} alt={`${product.name}-${product.id}`} />
+        <CardImg src={'/static/images/market/download.jpg'} alt={`${product.name}-${product.id}`}/>
       </CardImgWrapper>
       <CardFooter>
         <Button

@@ -6,8 +6,10 @@ import { Product } from '@md-modules/shared/mock/market/products';
 //context
 import { ProductsAPIContext } from '@md-modules/market/products/layers/api/products';
 
+export type ProductInfo = Pick<Product, 'id' | 'name' | 'price'>
+
 interface Context {
-  productList: Pick<Product, 'id' | 'name' | 'price'>[];
+  productList: ProductInfo[];
 }
 
 const ProductBLContext = React.createContext<Context>({
@@ -17,14 +19,13 @@ const ProductBLContext = React.createContext<Context>({
 const ProductsBLContextProvider: React.FC = ({ children }) => {
   const { products } = React.useContext(ProductsAPIContext);
 
-  const productList = React.useMemo<Pick<Product, 'id' | 'name' | 'price'>[]>(() => {
+  const productList = React.useMemo<ProductInfo[]>(() => {
     if (!products) {
       return [];
     }
 
-    return products;
+    return products.map(({ id, price, name }) => ({ id, price, name }));
   }, [typeof products === 'undefined']);
-
   return (
     <ProductBLContext.Provider
       value={{

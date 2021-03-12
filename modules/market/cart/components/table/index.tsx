@@ -1,24 +1,22 @@
 import * as React from 'react';
 import { Table, Thead } from './views';
-import { Cart } from '@md-modules/shared/mock/market/cart';
+import { CartContext } from '@md-modules/shared/contexts/CartContext';
 
-interface Props {
-  th: Array<string>
-  products: Cart
-}
 
-const CartTable: React.FC<Props> = ({ th, products }) => {
-  const body: JSX.Element[] = Array.from(products)
-    .map(([product, count]) => {
+const CartTable: React.FC = () => {
+  const { cart } = React.useContext(CartContext);
+
+  const body: JSX.Element[] = cart.products!
+    .map((product) => {
       return (
         <tr key={product.id}>
           <th>{product.name}</th>
-          <th>{count}</th>
-          <th>{product.price}</th>
+          <th>{product.count}</th>
+          <th>{product.price * product.count}</th>
           <th>
             <button
               onClick={() => {
-                // itemDecreaseButtonHandler(product.id);
+                cart.removeProduct(product.id);
               }}
             >
               -
@@ -31,7 +29,7 @@ const CartTable: React.FC<Props> = ({ th, products }) => {
     <Table>
       <Thead>
         <tr>
-          {th.map((thead, i) => (<th key={i}>{thead}</th>))}
+          {['name', 'quantity', 'price'].map((thead, i) => (<th key={i}>{thead}</th>))}
         </tr>
       </Thead>
       <tbody>{body}</tbody>

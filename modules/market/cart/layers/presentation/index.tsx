@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 //styles
 import {
   Close,
@@ -13,27 +14,32 @@ import {
 import { ContentLoader } from '@md-ui/loaders/content-loader';
 
 //mock
-import { CartProduct, Count, ID } from '@md-modules/shared/mock/market/cart';
+import { ProductCart } from '@md-modules/shared/mock/market/cart';
+//context
 import { CartContext } from '@md-modules/shared/contexts/CartContext';
+//components
 import { CartTable } from '@md-market/cart/components/table';
 
-interface Props {
-  itemDecreaseButtonHandler: (id: ID) => void;
-  closeHandler: () => void;
-}
 
-const CartPresentation: React.FC<Props> = ({ itemDecreaseButtonHandler, closeHandler }) => {
-  const { isLoading, cart } = React.useContext(CartContext);
+const CartPresentation: React.FC = () => {
+  const { isLoading, cart, modal } = React.useContext(CartContext);
 
-  const totalCount = Array.from(cart || new Map<CartProduct, Count>())
-    .reduce((acc, [product, count]) => (acc + (product.price * count)), 0);
+  const totalCount = cart.products?.reduce((acc, product: ProductCart) => {
+    return acc + (product.count * product.price);
+  }, 0);
+
+  useEffect(() => {
+    if (cart.products?.length === 0) {
+      modal.setShow(false);
+    }
+  }, [cart.products]);
 
   return (
     <ContentLoader isLoading={isLoading}>
       <Modal
         onClick={(event: React.SyntheticEvent) => {
           if (event.target === event.currentTarget) {
-            closeHandler();
+            modal.setShow(false);
           }
         }}
       >
@@ -41,7 +47,7 @@ const CartPresentation: React.FC<Props> = ({ itemDecreaseButtonHandler, closeHan
           <ModalHeader>
             <Close
               onClick={() => {
-                closeHandler();
+                modal.setShow(false);
               }}
             >
               &times;
@@ -49,7 +55,7 @@ const CartPresentation: React.FC<Props> = ({ itemDecreaseButtonHandler, closeHan
             <h2>Cart</h2>
           </ModalHeader>
           <ModalBody>
-            <CartTable th={['name', 'count', 'price']} products={cart ?? new Map<CartProduct, Count>()}/>
+            <CartTable/>
           </ModalBody>
           <ModalFooter>
             <OrderPrice>{totalCount}$</OrderPrice>

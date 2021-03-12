@@ -8,17 +8,18 @@ import { ContentLoader } from '@md-ui/loaders/content-loader';
 import { Wrapper } from './views';
 //components
 import { Card } from '../../components/card';
+import { CartContext } from '@md-modules/shared/contexts/CartContext';
 
 const ProductsPresentation = () => {
   const { isLoading } = React.useContext(ProductsAPIContext);
   const { productList } = React.useContext(ProductBLContext);
+  const { cart } = React.useContext(CartContext);
 
   return (
     <Wrapper>
       <ContentLoader isLoading={isLoading}>
         {productList.map((product) => (
-          <Card key={product.id} product={product} addProductHandler={() => {
-          }}/>
+          <Card key={product.id} product={product} addProductHandler={cart.addProduct}/>
         ))}
       </ContentLoader>
     </Wrapper>

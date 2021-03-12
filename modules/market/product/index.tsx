@@ -6,8 +6,7 @@ import { ProductPresentation } from '@md-m-product/layers/presentation';
 const Container = () => (
   <ProductAPIContextProvider>
     <ProductBLContextProvider>
-      <ProductPresentation buttonHandler={() => {
-      }}/>
+      <ProductPresentation/>
     </ProductBLContextProvider>
   </ProductAPIContextProvider>
 );
