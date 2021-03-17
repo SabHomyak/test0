@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useQuery } from '@md-utils/mock/query';
 import { cartProducts, ID, ProductCart } from '@md-modules/shared/mock/market/cart';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { locStorage } from '@md-utils/localStorage';
 import { changeProductCount } from '@md-modules/shared/contexts/CartContext/functions';
 
@@ -31,11 +31,23 @@ const CartContextProvider: React.FC = ({ children }) => {
   const { data, loading } = useQuery(cartProducts);
   const [show, setShow] = useState<boolean>(false);
   const [products, setProducts] = useState<Array<ProductCart> | undefined>(data);
+  const currentStateProducts = useRef(products);
+  currentStateProducts.current = products;
+  useEffect(() => {
+    setProducts(locStorage('cart') || data);
+  }, [data]);
 
   useEffect(() => {
-    setProducts(locStorage('cart') || cartProducts);
+    window.onbeforeunload = () => {
+      locStorage('cart', currentStateProducts.current);
+    };
+    return () => {
+      window.onbeforeunload = null;
+      if (typeof currentStateProducts.current !== 'undefined') {
+        locStorage('cart', currentStateProducts.current);
+      }
+    };
   }, []);
-
   const addProduct = (id: ID) => {
     if (products) {
       setProducts(changeProductCount(products, id, 'increase'));
@@ -46,8 +58,6 @@ const CartContextProvider: React.FC = ({ children }) => {
       setProducts(changeProductCount(products, id, 'decrease'));
     }
   };
-
-  locStorage('cart', products);
 
   return (
     <CartContext.Provider

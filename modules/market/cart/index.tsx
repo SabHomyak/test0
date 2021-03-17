@@ -4,6 +4,6 @@ import { CartContext } from '@md-modules/shared/contexts/CartContext';
 
 const CartContainer: React.FC = () => {
   const { modal } = React.useContext(CartContext);
-  return <>{modal.show && <CartPresentation/>}</>;
+  return <>{modal.show && <CartPresentation />}</>;
 };
 export { CartContainer };
